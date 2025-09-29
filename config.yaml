@@ -1,0 +1,34 @@
+# Первичный конфиг. Можно изменять во время работы, затем нажать "Перезагрузить правила" или сохранить из GUI.
+protected_ips:
+  - "91.226.80.174"
+
+large_packet_threshold: 1500
+port_scan_threshold: 15
+port_scan_window_seconds: 10
+rate_limit_pps: 100
+rate_limit_window_seconds: 2
+block_durations_seconds: 600
+auto_block_on_detection: true
+enable_icmp_unreachable: false
+icmp_unreachable_rate_limit: 10
+
+suspicious_payload_regexes:
+  - "(?:select.+from|union.+select)"
+  - "/etc/passwd"
+  - "\\x90\\x90\\x90"
+  - "(?:<script>|onerror=|onload=)"
+
+http_methods_watch:
+  - "GET"
+  - "POST"
+  - "HEAD"
+  - "PUT"
+  - "DELETE"
+
+suspicious_user_agents:
+  - "sqlmap"
+  - "nikto"
+  - "nmap"
+
+max_repeated_http_path: 50
+http_repeated_window_seconds: 30
